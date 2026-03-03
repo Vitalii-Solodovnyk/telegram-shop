@@ -1,3 +1,7 @@
+const tg = window.Telegram.WebApp;
+
+git.add .
+
 const input = document.getElementById("myInput");
 
 const ul = document.getElementById("myUl");
