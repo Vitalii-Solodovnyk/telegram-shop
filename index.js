@@ -1,7 +1,5 @@
 const tg = window.Telegram.WebApp;
 
-git.add .
-
 const input = document.getElementById("myInput");
 
 const ul = document.getElementById("myUl");
@@ -50,7 +48,18 @@ button.addEventListener("click", (event) => {
   createBook(bookObj);
 
   localStorage.setItem("myBooks", JSON.stringify(books));
+
+  telegram();
 });
+
+function telegram() {
+  tg.MainButton.show();
+  if (books.length > 0) {
+    tg.MainButton.setText("Buy");
+  } else {
+    console.log("Error");
+  }
+}
 
 input.addEventListener("input", (event) => {
   let searchText = input.value;
