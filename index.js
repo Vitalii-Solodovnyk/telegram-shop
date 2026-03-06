@@ -1,6 +1,6 @@
 const input = document.getElementById("myInput");
 
-const tg = window.telegram.WebApp;
+const tg = window.Telegram.WebApp;
 
 const ul = document.getElementById("myUl");
 
