@@ -1,6 +1,6 @@
-const tg = window.Telegram.WebApp;
-
 const input = document.getElementById("myInput");
+
+const tg = window.telegram.WebApp;
 
 const ul = document.getElementById("myUl");
 
@@ -25,14 +25,23 @@ function createBook(book) {
   const li = document.createElement("li");
   let titleText = document.createElement("h3");
   let priceText = document.createElement("p");
+  let deleteButton = document.createElement("button");
+  deleteButton.textContent = "X";
 
   titleText.textContent = book.name;
   priceText.textContent = book.price + "₴";
 
   li.append(titleText);
   li.append(priceText);
+  li.append(deleteButton);
 
   ul.append(li);
+  deleteButton.addEventListener("click", (event) => {
+    li.remove();
+    books = books.filter((b) => b.id !== book.id);
+    localStorage.setItem("myBooks", JSON.stringify(books));
+    telegram();
+  });
 }
 
 button.addEventListener("click", (event) => {
@@ -48,18 +57,8 @@ button.addEventListener("click", (event) => {
   createBook(bookObj);
 
   localStorage.setItem("myBooks", JSON.stringify(books));
-
   telegram();
 });
-
-function telegram() {
-  tg.MainButton.show();
-  if (books.length > 0) {
-    tg.MainButton.setText("Buy");
-  } else {
-    console.log("Error");
-  }
-}
 
 input.addEventListener("input", (event) => {
   let searchText = input.value;
@@ -68,4 +67,13 @@ input.addEventListener("input", (event) => {
   ul.innerHTML = "";
   filterBooks.forEach(createBook);
 });
+
+function telegram() {
+  if (books.length > 0) {
+    tg.MainButton.show();
+    tg.MainButton.setText("Buy");
+  } else {
+    tg.MainButton.hide();
+  }
+}
 //books = books.filter(word => word.id === (bookshasll.id))
