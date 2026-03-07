@@ -1,5 +1,7 @@
 const input = document.getElementById("myInput");
 
+const select = document.getElementById("categorySelect");
+
 const tg = window.Telegram.WebApp;
 
 const ul = document.getElementById("myUl");
@@ -47,10 +49,12 @@ function createBook(book) {
 button.addEventListener("click", (event) => {
   let title = titleInput.value;
   let price = priceInput.value;
+  let selectCategory = select.value;
   const bookObj = {
     id: Date.now(),
     price: price,
     name: title,
+    category: selectCategory,
   };
   books.push(bookObj);
 
