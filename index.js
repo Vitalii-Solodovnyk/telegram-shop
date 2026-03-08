@@ -1,5 +1,13 @@
 const input = document.getElementById("myInput");
 
+const cartPage = document.getElementById("cartPage");
+
+const storePage = document.getElementById("storePage");
+
+const closeBtn = document.getElementById("close-button");
+
+const cartBtn = document.getElementById("cart");
+
 const select = document.getElementById("categorySelect");
 
 const clearButton = document.getElementById("clearButton");
@@ -100,4 +108,13 @@ function telegram() {
     tg.MainButton.hide();
   }
 }
+cartBtn.addEventListener("click", (event) => {
+  cartPage.style.display = "block";
+  storePage.style.display = "none";
+});
+
+closeBtn.addEventListener("click", (event) => {
+  cartPage.style.display = "none";
+  storePage.style.display = "block";
+});
 //books = books.filter(word => word.id === (bookshasll.id))
