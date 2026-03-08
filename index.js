@@ -14,6 +14,8 @@ const button = document.getElementById("Button");
 
 let books = [];
 
+let cart = [];
+
 let bookshall = localStorage.getItem("myBooks");
 
 if (bookshall !== null) {
@@ -29,6 +31,12 @@ function createBook(book) {
   let priceText = document.createElement("p");
   let deleteButton = document.createElement("button");
   deleteButton.textContent = "X";
+  let buyButton = document.createElement("button");
+  buyButton.textContent = "Add to cart";
+  buyButton.addEventListener("click", (event) => {
+    cart.push(book);
+    telegram();
+  });
 
   titleText.textContent = book.name;
   priceText.textContent = book.price + "₴";
@@ -73,7 +81,7 @@ input.addEventListener("input", (event) => {
 });
 
 function telegram() {
-  if (books.length > 0) {
+  if (cart.length > 0) {
     tg.MainButton.show();
     tg.MainButton.setText("Buy");
   } else {
