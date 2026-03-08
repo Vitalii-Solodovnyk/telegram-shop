@@ -2,6 +2,8 @@ const input = document.getElementById("myInput");
 
 const select = document.getElementById("categorySelect");
 
+const clearButton = document.getElementById("clearButton");
+
 const tg = window.Telegram.WebApp;
 
 const ul = document.getElementById("myUl");
@@ -79,6 +81,11 @@ input.addEventListener("input", (event) => {
   let filterBooks = books.filter((book) => book.name.includes(searchText));
   ul.innerHTML = "";
   filterBooks.forEach(createBook);
+});
+
+clearButton.addEventListener("click", (event) => {
+  cart = [];
+  telegram();
 });
 
 function telegram() {
