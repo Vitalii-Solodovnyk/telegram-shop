@@ -44,6 +44,7 @@ function createBook(book) {
   li.append(titleText);
   li.append(priceText);
   li.append(deleteButton);
+  li.append(buyButton);
 
   ul.append(li);
   deleteButton.addEventListener("click", (event) => {
