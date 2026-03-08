@@ -82,9 +82,13 @@ input.addEventListener("input", (event) => {
 });
 
 function telegram() {
+  let totalPrice = 0;
+  cart.forEach((item) => {
+    totalPrice = totalPrice + Number(item.price);
+  });
   if (cart.length > 0) {
     tg.MainButton.show();
-    tg.MainButton.setText("Buy");
+    tg.MainButton.setText(`Buy ` + totalPrice + `₴`);
   } else {
     tg.MainButton.hide();
   }
